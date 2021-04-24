@@ -1,0 +1,35 @@
+html,
+body {
+  margin: 0;
+}
+
+.wrapper {
+    display: grid;
+    position:relative;
+    grid-template-columns: minmax(0, auto);
+    grid-template-rows: minmax(0, auto) minmax(0, auto) minmax(0, auto) minmax(0, auto);
+    grid-gap: 10px;
+}
+
+.option{
+    display: grid;
+    position:relative;
+    grid-template-columns: 45% 10% 45%;
+    grid-gap: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.option p{
+    margin: 0;
+}
+
+.option .pagination{
+    margin: 0;
+}
+
+.option .form-select{
+    width: auto;
+    vertical-align: middle;
+    display: inline-block;
+}

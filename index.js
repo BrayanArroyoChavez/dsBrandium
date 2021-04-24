@@ -7,17 +7,15 @@ app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 app.set('views',__dirname + '/views');
 
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(__dirname + '/public'));
 
 //middleware
 app.use(morgan('dev'));
 
 //Rutas
-app.get('/',(req,res) =>{
-   res.render('dashboard.ejs')  
-});
+app.use(require('./routes/dashboard'));
 
-//Conexión al puerto especifico
+//Conexión
 app.listen(app.get('port'), () =>{
     console.log('servidor en el puerto', app.get('port'))
 })
