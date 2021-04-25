@@ -40,32 +40,62 @@
                 <thead>
                   <tr>
                     <th scope="col">Número de solicitud</th>
+                    <th scope="col">Número de registro</th>
                     <th scope="col">Nombre de la marca</th>
                     <th scope="col">Clasificación</th>
+                    <th scope="col">Tipo de DPI</th>
+                    <th scope="col">Tipo de marca</th>
                     <th scope="col">Clase</th>
+                    <th scope="col">Productos y/o servicios</th>
                     <th scope="col">Situación</th>
+                    <th scope="col">Fecha de solicitud</th>
+                    <th scope="col">Fecha de registro</th>
+                    <th scope="col">Fecha de vencimiento</th>
                     <th scope="col">Nombre del solicitante</th>
                     <th scope="col">Teléfono del solicitante</th>
                     <th scope="col">Correo del solicitante</th>
+                    <th scope="col">país del solicitante</th>
+                    <th scope="col">municipio del solicitante</th>
+                    <th scope="col">dirección del solicitante</th>
+                    <th scope="col">código postal del solicitante</th>
                     <th scope="col">Nombre del representante</th>
                     <th scope="col">Teléfono del representante</th>
                     <th scope="col">Correo del representante</th>
+                    <th scope="col">país del representante</th>
+                    <th scope="col">municipio del representante</th>
+                    <th scope="col">dirección del representante</th>
+                    <th scope="col">código postal del representante</th>
                   </tr>
                 </thead>
                 <tbody>
                   <% marcas.forEach(function(marca) { %>
                     <tr>
                       <th scope="row"><%= marca.no_solicitud %></th>
+                      <td><%= marca.no_registro %></td>
                       <td><%= marca.nombre_marca %></td>
                       <td><%= marca.clasificacion_niza %></td>
+                      <td><%= marca.tipo_dpi %></td>
+                      <td><%= marca.tipo_marca %></td>
                       <td><%= marca.clase_marca %></td>
+                      <td><%= marca.producto_servicio %></td>
                       <td><%= marca.situacion_marca %></td>
+                      <td><%= marca.fecha_solicitud %></td>
+                      <td><%= marca.fecha_registro %></td>
+                      <td><%= marca.fecha_vencimiento %></td>
                       <td><%= marca.nombre_solicitante %></td>
                       <td><%= marca.telefono_solicitante %></td>
                       <td><%= marca.correo_solicitante %></td>
+                      <td><%= marca.pais_solicitante %></td>
+                      <td><%= marca.municipio_solicitante %></td>
+                      <td><%= marca.direccion_solicitante %></td>
+                      <td><%= marca.cp_solicitante %></td>
                       <td><%= marca.nombre_representante %></td>
                       <td><%= marca.telefono_representante %></td>
                       <td><%= marca.correo_representante %></td>
+                      <td><%= marca.pais_representante %></td>
+                      <td><%= marca.ciudad_representante %></td>
+                      <td><%= marca.direccion_representante %></td>
+                      <td><%= marca.cp_representante %></td>
                     </tr>
                   <% }); %>
                 </tbody>
