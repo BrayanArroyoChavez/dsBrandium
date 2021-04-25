@@ -39,85 +39,35 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Número de solicitud</th>
+                    <th scope="col">Nombre de la marca</th>
+                    <th scope="col">Clasificación</th>
+                    <th scope="col">Clase</th>
+                    <th scope="col">Situación</th>
+                    <th scope="col">Nombre del solicitante</th>
+                    <th scope="col">Teléfono del solicitante</th>
+                    <th scope="col">Correo del solicitante</th>
+                    <th scope="col">Nombre del representante</th>
+                    <th scope="col">Teléfono del representante</th>
+                    <th scope="col">Correo del representante</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  <% marcas.forEach(function(marca) { %>
+                    <tr>
+                      <th scope="row"><%= marca.no_solicitud %></th>
+                      <td><%= marca.nombre_marca %></td>
+                      <td><%= marca.clasificacion_niza %></td>
+                      <td><%= marca.clase_marca %></td>
+                      <td><%= marca.situacion_marca %></td>
+                      <td><%= marca.nombre_solicitante %></td>
+                      <td><%= marca.telefono_solicitante %></td>
+                      <td><%= marca.correo_solicitante %></td>
+                      <td><%= marca.nombre_representante %></td>
+                      <td><%= marca.telefono_representante %></td>
+                      <td><%= marca.correo_representante %></td>
+                    </tr>
+                  <% }); %>
                 </tbody>
               </table>
         </div>

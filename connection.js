@@ -6,7 +6,5 @@ var connection = mysql.createConnection({
   password : '',
   database : 'kampsys'
 });
- 
-connection.connect();
 
 module.exports = connection
