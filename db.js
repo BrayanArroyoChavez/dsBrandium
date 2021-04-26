@@ -10,8 +10,13 @@ function getSituacion() {
     return dbQuery('SELECT DISTINCT(situacion_marca) FROM `marcas_renovacion`');
 }
 
+//Pendiente de modificación para que muestre valores unicos
 function getClase() {
     return dbQuery('SELECT DISTINCT(clase_marca) FROM `marcas_renovacion`');
+}
+
+function getClasificacion() {
+    return dbQuery('SELECT DISTINCT(clasificacion_niza) FROM `marcas_renovacion`');
 }
 
 function dbQuery(databaseQuery) {
@@ -31,5 +36,6 @@ function dbQuery(databaseQuery) {
 db.getMarcas = getMarcas;
 db.getSituacion = getSituacion;
 db.getClase = getClase;
+db.getClasificacion = getClasificacion;
 
 module.exports = db;
