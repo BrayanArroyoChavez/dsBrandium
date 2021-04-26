@@ -2,8 +2,8 @@ const connection = require('./connection')
 
 const db = {};
 
-function getMarcas() {
-    return dbQuery('SELECT * FROM `marcas_renovacion` where id < 7000');
+function getMarcas(page,size) {
+    return dbQuery(`SELECT * FROM marcas_renovacion LIMIT ${page}, ${size}`);
 }
 
 function getSituacion() {

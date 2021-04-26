@@ -3,8 +3,10 @@ const router = new Router();
 
 const db = require('../db')
 
-router.get('/dashboard',async (req,res) =>{
-  marcas = await db.getMarcas();
+router.get('/dashboard/:page/:size',async (req,res) =>{
+  let size = req.params.size;
+  let page = (req.params.page * size) - size;
+  marcas = await db.getMarcas(page, size);
   situacion = await db.getSituacion();
   clase = await db.getClase();
   clasificacion = await db.getClasificacion();
