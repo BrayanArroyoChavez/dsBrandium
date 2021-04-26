@@ -1,13 +1,13 @@
 const { Router } = require('express');
 const router = new Router();
 
-const connection = require('../connection')
+const db = require('../db')
 
 router.get('/dashboard',async (req,res) =>{
-    const marcas = await connection.query('SELECT * FROM `marcas_renovacion` where id < 7000', function (error, results, fields) {
-        if (error) throw error;
-        res.render('dashboard.ejs', {marcas: results});
-      });
+  marcas = await db.getMarcas();
+  situacion = await db.getSituacion();
+  clase = await db.getClase();
+  res.render('dashboard.ejs', {marcas: marcas, situacion: situacion, clase: clase});
  });
 
  module.exports = router

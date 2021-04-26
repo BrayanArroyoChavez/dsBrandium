@@ -40,17 +40,15 @@
                 <p>Filtros</p>
                 <label>Situación de la marca</label>
                 <select class="form-select">
-                    <option selected>50</option>
-                    <option value="1">100</option>
-                    <option value="2">250</option>
-                    <option value="3">500</option>
+                    <% situacion.forEach(function(s) { %>
+                        <option value=<%= s.situacion_marca %>><%= s.situacion_marca %></option>
+                    <% }); %>
                 </select>
                 <label>Número de clase</label>
                 <select class="form-select">
-                    <option selected>50</option>
-                    <option value="1">100</option>
-                    <option value="2">250</option>
-                    <option value="3">500</option>
+                    <% clase.forEach(function(c) { %>
+                        <option value=<%= c.clase_marca %>><%= c.clase_marca %></option>
+                    <% }); %>
                 </select>
                 <label>Teléfono</label>
                 <div class="form-check">

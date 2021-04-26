@@ -11,7 +11,7 @@ function getSituacion() {
 }
 
 function getClase() {
-    return dbQuery('SELECT DISTINCT(situacion_marca) FROM `marcas_renovacion`');
+    return dbQuery('SELECT DISTINCT(clase_marca) FROM `marcas_renovacion`');
 }
 
 function dbQuery(databaseQuery) {
