@@ -14,8 +14,7 @@ body {
 
 .option{
     display: grid;
-    position:relative;
-    grid-template-columns: 45% 10% 45%;
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
     grid-gap: 10px;
     align-items: center;
     justify-items: center;

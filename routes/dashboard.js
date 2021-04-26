@@ -10,7 +10,7 @@ router.get('/dashboard/:page/:size',async (req,res) =>{
   situacion = await db.getSituacion();
   clase = await db.getClase();
   clasificacion = await db.getClasificacion();
-  res.render('dashboard.ejs', {marcas: marcas, situacion: situacion, clase: clase, clasificacion:clasificacion});
+  res.render('dashboard.ejs', {marcas: marcas, situacion: situacion, clase: clase, clasificacion: clasificacion, page: req.params.page, size});
  });
 
  module.exports = router
