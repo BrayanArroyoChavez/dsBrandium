@@ -20,10 +20,12 @@ connection.connect(function(err) {
   });
 
 router.get('/dashboard',async (req,res) =>{
-    const marcas = await connection.query('SELECT * FROM `marcas_renovacion`', function (error, results, fields) {
+  //SELECT DISTINCT(situacion_marca) FROM `marcas_renovacion`
+    const marcas = await connection.query('SELECT * FROM `marcas_renovacion` where id < 7000', function (error, results, fields) {
         if (error) throw error;
-        res.render('dashboard.ejs', {marcas: results});
+        res.send({marcas: marcas});
       });
+    res.render('dashboard.ejs');
  });
 
  module.exports = router

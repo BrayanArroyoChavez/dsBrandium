@@ -1,12 +1,13 @@
+* { box-sizing: border-box;}
+
 html,
 body {
-  margin: 0;
+    width: 100%;
+    margin: 0;
 }
 
 .wrapper {
     display: grid;
-    position:relative;
-    grid-template-columns: minmax(0, auto);
     grid-template-rows: minmax(0, auto) minmax(0, auto) minmax(0, auto) minmax(0, auto);
     grid-gap: 10px;
 }
@@ -32,4 +33,16 @@ body {
     width: auto;
     vertical-align: middle;
     display: inline-block;
+}
+
+.content{
+    display: flex;
+}
+
+.content .filter{
+    width: 30vw;
+}
+
+.content div{
+    margin:0 30px 0 10px;
 }
