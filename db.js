@@ -2,8 +2,12 @@ const connection = require('./connection')
 
 const db = {};
 
-function getMarcas(page,size) {
-    return dbQuery(`SELECT * FROM marcas_renovacion LIMIT ${page}, ${size}`);
+function getMarcas(page,size,condicion) {
+    if (condicion == ""){
+        return dbQuery(`SELECT * FROM marcas_renovacion LIMIT ${page}, ${size}`);
+    }else{
+        return dbQuery(`SELECT * FROM marcas_renovacion WHERE ${condicion} LIMIT ${page}, ${size}`);
+    }
 }
 
 function getSituacion() {
@@ -20,6 +24,7 @@ function getClasificacion() {
 }
 
 function dbQuery(databaseQuery) {
+    console.log(databaseQuery);
     return new Promise(data => {
         connection.query(databaseQuery, function (error, result) {
         if (error) throw error;

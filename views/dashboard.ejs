@@ -17,7 +17,7 @@
             <div class="form-group">
                 <form action="" method="POST" id="size">
                     <label>Número de filas</label>
-                    <select class="form-select" id="size" onchange="changeAction(this.value);">
+                    <select class="form-select" onchange="changeAction(this.value);">
                         <% if(size == 50) { %>
                             <option value="50" selected>50</option>
                         <% }else{ %>
@@ -64,42 +64,45 @@
         </div>
         <div class="content">
             <div class="filter">
-                <p>Filtros</p>
-                <label class="option-filter-title">Situación de la marca</label>
-                <select class="form-select">
-                    <option value="1"></option>
-                    <% situacion.forEach(function(s) { %>
-                        <option value=<%= s.situacion_marca %>><%= s.situacion_marca %></option>
-                    <% }); %>
-                </select>
-                <label class="option-filter-title">Número de Clasificación</label>
-                <select class="form-select">
-                    <option value="1"></option>
-                    <% clasificacion.forEach(function(c) { %>
-                        <option value=<%= c.clasificacion_niza %>><%= c.clasificacion_niza %></option>
-                    <% }); %>
-                </select>
-                <label class="option-filter-title">Número de clase</label>
-                <select class="form-select">
-                    <option value="1"></option>
-                    <% clase.forEach(function(c) { %>
-                        <option value=<%= c.clase_marca %>><%= c.clase_marca %></option>
-                    <% }); %>
-                </select>
-                <label class="option-filter-title">Teléfono</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">
-                      Disponible
-                    </label>
-                </div>
-                <label class="option-filter-title">Correo</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">
-                      Disponible
-                    </label>
-                </div>
+                <form action="/dashboard/<%= page - 1 %>/<%= size %>" method="POST" id="filter">
+                    <p>Filtros</p>
+                    <label class="option-filter-title">Situación de la marca</label>
+                    <select class="form-select" name="sMarca">
+                        <option value="1"></option>
+                        <% situacion.forEach(function(s) { %>
+                            <option value=<%= s.situacion_marca %>><%= s.situacion_marca %></option>
+                        <% }); %>
+                    </select>
+                    <label class="option-filter-title">Número de Clasificación</label>
+                    <select class="form-select" name="ncnMarca">
+                        <option value="1"></option>
+                        <% clasificacion.forEach(function(c) { %>
+                            <option value=<%= c.clasificacion_niza %>><%= c.clasificacion_niza %></option>
+                        <% }); %>
+                    </select>
+                    <label class="option-filter-title">Número de clase</label>
+                    <select class="form-select" name="ncMarca">
+                        <option value="1"></option>
+                        <% clase.forEach(function(c) { %>
+                            <option value=<%= c.clase_marca %>><%= c.clase_marca %></option>
+                        <% }); %>
+                    </select>
+                    <label class="option-filter-title">Teléfono</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="telefono">
+                        <label class="form-check-label">
+                        Disponible
+                        </label>
+                    </div>
+                    <label class="option-filter-title">Correo</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="correo">
+                        <label class="form-check-label">
+                        Disponible
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>
             </div>
             <table class="table">
                 <thead>
