@@ -49,3 +49,7 @@ body {
 .content .option-filter-title{
     margin-top: 30px;
 }
+
+.filter button{
+    margin-top: 30px;
+}
