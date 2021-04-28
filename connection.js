@@ -1,19 +1,20 @@
-var mysql = require('mysql');
+const Sequelize = require('sequelize');
 
-var connection = mysql.createConnection({
+const marcas_renovacionModel = require('./models/marcas_renovacion');
+
+const sequelize = new Sequelize('kampsys','root','',{
   host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'kampsys'
-});
+  dialect  : 'mysql'
+})
 
-connection.connect(function(err) {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  }
- 
-  console.log('Base de datos conectada');
-});
+const marcas_renovacion = marcas_renovacionModel(sequelize,Sequelize);
 
-module.exports = connection
+sequelize.sync({ force:false })
+  .then(() =>{
+    console.log("Tablas sincronizadas")
+})
+
+module.exports = {
+  marcas_renovacion,
+  sequelize
+}

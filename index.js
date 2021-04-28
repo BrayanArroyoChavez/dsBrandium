@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 const app = express();
 
 //Configuración
+require('./connection')
+
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 app.set('views',__dirname + '/views');

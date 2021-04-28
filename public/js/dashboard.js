@@ -7,58 +7,46 @@ function changeAction(val){
 }
 
 //Función para establecer las condiciones de filtrado
-function getCondicion(req){
-    condicion = "";
-    if (req.body.sMarca != 1 && req.body.sMarca != undefined){
-        console.log("Situación de la marca: " + req.body.sMarca);
-        if (condicion == ""){
-          condicion += "situacion_marca = '" + req.body.sMarca + "'";
-        }else{
-          condicion += " AND situacion_marca = '" + req.body.sMarca + "'";
-        }
+function getCondicion(req, Op){
+    where = [];
+    if (req.query.Situacion != 'null' && req.query.Situacion){
+      where.push({situacion_marca : req.query.Situacion});
     }
-    if (req.body.ncnMarca != 1 && req.body.ncnMarca != undefined){
-        console.log("Número de clasificación: " + req.body.ncnMarca);
-        if (condicion == ""){
-          condicion += "clasificacion_niza = " + req.body.ncnMarca;
-        }else{
-          condicion += " AND clasificacion_niza = " + req.body.ncnMarca;
-        }
+    if (req.query.Clasificacion != 'null' && req.query.Clasificacion){
+      where.push({clasificacion_niza : req.query.Clasificacion});
     }
-    if (req.body.ncMarca != 1 && req.body.ncMarca != undefined){
-        console.log("Número de marca: " + req.body.ncMarca);
-        if (condicion == ""){
-          condicion += "clase_marca = " + req.body.ncMarca;
-        }else{
-          condicion += " AND clase_marca = " + req.body.ncMarca;
-        }
+    if (req.query.Clase != 'null' && req.query.Clase){
+      where.push({clase_marca : req.query.Clase});
     }
-    if(req.body.telefono && req.body.telefono){
-        if (condicion == ""){
-          condicion += "((telefono_solicitante != '' OR telefono_representante != '') OR (correo_solicitante != '' OR correo_representante != ''))";
-        }else{
-          condicion += " AND ((telefono_solicitante != '' OR telefono_representante != '') OR (correo_solicitante != '' OR correo_representante != ''))";
-        }
+  
+    if(req.query.telefono != undefined && req.query.correo != undefined){
+      console.log(req.query.telefono)
+      where.push({
+        [Op.or] : [
+          {[Op.or] : [{ telefono_solicitante: {[Op.not]:""} },{ telefono_representante: {[Op.not]:""} }]},   
+          {[Op.or] : [{ correo_solicitante: {[Op.not]:""} },{ correo_representante: {[Op.not]:""} }]}
+      ]})
     }else{
-        if (req.body.telefono){
-          console.log("Teléfono: " + req.body.telefono);
-          if (condicion == ""){
-            condicion += "(telefono_solicitante != '' OR telefono_representante != '')";
-          }else{
-            condicion += " AND (telefono_solicitante != '' OR telefono_representante != '')";
-          }
-        }
-        if (req.body.correo){
-          console.log("Correo:" + req.body.correo);
-          if (condicion == ""){
-            condicion += "(correo_solicitante != '' AND correo_representante != '')";
-          }else{
-            condicion += " AND (correo_solicitante != '' OR correo_representante != '')";
-          }
-        }
-    }
-
-    return condicion;
+      if (req.query.Telefono != undefined){
+        where.push({
+          [Op.or] : [
+            { telefono_solicitante: {[Op.not]:""} },
+            { telefono_representante: {[Op.not]:""} }
+        ]})
+        //where.telefono_solicitante =  {[Op.not]:""};
+        //where.telefono_representante =  {[Op.not]:""};
+      }
+      if (req.query.Correo != undefined){
+        where.push({
+          [Op.or] : [
+            { correo_solicitante: {[Op.not]:""} },
+            { correo_representante: {[Op.not]:""} }
+        ]})
+        //where.correo_solicitante =  {[Op.not]:""};
+        //where.correo_representante =  {[Sequelize.Op.not]:""};
+      }
+    }  
+    return where;
 }
 
 fn.getCondicion = getCondicion
