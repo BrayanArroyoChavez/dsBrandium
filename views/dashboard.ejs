@@ -55,11 +55,25 @@
                         </a>
                     </li>
                 <% } %>
-                <p hidden><%= page++%></p>
-                <a class="page-link" href="/dashboard/<%= page %>/<%= size %>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
+                <% if(page*size > registros) { %>
+                    <p><%= ((page*size)-size) + 1 %> - <%= registros %> de <%= registros%></p>
+                <% }else{ %>
+                    <p><%= ((page*size)-size) + 1 %> - <%= page*size %> de <%= registros%></p>
+                <% } %>
+                <% if(page == pages) { %>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                <% }else{ %>
+                    <% page++%>
+                    <li class="page-item">
+                        <a class="page-link" href="/dashboard/<%= page %>/<%= size %>" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                <% } %>
             </ul>
         </div>
         <div class="content">

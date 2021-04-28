@@ -14,7 +14,9 @@ router.all('/dashboard/:page/:size',async (req,res) =>{
   situacion = await db.getSituacion();
   clase = await db.getClase();
   clasificacion = await db.getClasificacion();
-  res.render('dashboard.ejs', {marcas: marcas, situacion: situacion, clase: clase, clasificacion: clasificacion, page: req.params.page, size:size});
+  count = await db.getCount();
+  res.render('dashboard.ejs', {marcas: marcas, situacion: situacion, clase: clase, clasificacion: clasificacion, 
+                                page: req.params.page, size: size, pages: Math.ceil(count[0].pages/size), registros: count[0].pages});
  });
 
  module.exports = router
