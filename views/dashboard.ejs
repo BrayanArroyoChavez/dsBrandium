@@ -15,9 +15,9 @@
         </div>
         <div class="option">
             <div class="form-group">
-                <form action="" method="POST" id="size">
+                <form action="/dashboard" method="GET" id="size">
                     <label>Número de filas</label>
-                    <select class="form-select" onchange="changeAction(this.value);">
+                    <select class="form-select" name="Size" onchange="changeAction(this.value);">
                         <% if(size == 50) { %>
                             <option value="50" selected>50</option>
                         <% }else{ %>

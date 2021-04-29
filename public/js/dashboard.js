@@ -2,7 +2,6 @@ const fn = {};
 
 //Función para cambiar la cantidad de registros que se muestran por página
 function changeAction(val){
-    $("#size").attr("action",val);
     $("#size").submit();
 }
 
