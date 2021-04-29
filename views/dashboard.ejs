@@ -28,6 +28,11 @@
                         </a>
                     </li>
                 <% } %>
+                <% if((size*page) > count) { %>
+                    <p><%= ((size*page) - size) +1 %> - <%= count %>  de <%= count %></p>
+                <% }else{ %>
+                    <p><%= ((size*page) - size) +1 %> - <%= size*page %>  de <%= count %></p>
+                <% } %>
                 <% if(page == lastpage) { %>
                     <li class="page-item disabled">
                         <a class="page-link" aria-label="Next">
