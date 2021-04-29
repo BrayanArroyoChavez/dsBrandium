@@ -6,7 +6,7 @@ const { marcas_renovacion } = require('../connection')
 const fn = require('../public/js/dashboard.js')
 
 router.all('/dashboard',async (req,res) =>{
-  const page = parseInt(req.query.page) || 1;
+  const page = parseInt(req.query.Page) || 1;
   const limit = parseInt(req.query.Size) || 50;
   
   let offset = (limit*page) - limit;
@@ -43,7 +43,7 @@ router.all('/dashboard',async (req,res) =>{
     attributes: [Sequelize.fn('DISTINCT', Sequelize.col('clasificacion_niza')), 'clasificacion_niza']
   });
   res.render('dashboard.ejs', {marcas: marcas.rows, situacion: situacion, clase: clase, clasificacion: clasificacion, 
-                              page: page, size: limit, filter: filter });
+                              page: page, lastpage: Math.ceil(marcas.count/limit), size: limit, filter: filter });
  });
 
  module.exports = router

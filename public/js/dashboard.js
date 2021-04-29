@@ -5,6 +5,27 @@ function changeAction(){
     $("#filter").submit();
 }
 
+function pageNext(){
+  const parametros = window.location.search;
+  const urlparametros = new URLSearchParams(parametros);
+  page = urlparametros.get("Page")
+  if (page){
+    urlparametros.set("Page",(parseInt(page) + 1));
+    document.getElementById('pageNext').setAttribute('href', "/dashboard?" + urlparametros);
+  }else{
+    urlparametros.set("Page","2");
+    document.getElementById('pageNext').setAttribute('href', "/dashboard?" + urlparametros);
+  }
+}
+
+function pagePrevious(){
+  const parametros = window.location.search;
+  const urlparametros = new URLSearchParams(parametros);
+  page = urlparametros.get("Page")
+  urlparametros.set("Page",(parseInt(page) - 1));
+  document.getElementById('pagePrevious').setAttribute('href', "/dashboard?" + urlparametros); 
+}
+
 //Función para establecer las condiciones de filtrado
 function getCondicion(req, Op){
     where = [];
