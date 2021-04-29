@@ -6,13 +6,15 @@ const { marcas_renovacion } = require('../connection')
 const fn = require('../public/js/dashboard.js')
 
 router.all('/dashboard',async (req,res) =>{
-  let size = parseInt(req.query.page) || 1;
-  let limit = parseInt(req.query.Size) || 50;
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.Size) || 50;
   
-  let offset = (limit*size) - limit;
+  let offset = (limit*page) - limit;
   const where = fn.getCondicion(req,Op);
+  const filter = fn.getFiltro(req);
 
-  console.log(where.length)
+  console.log(where);
+  console.log(filter);
   
   if (where.length != 0){
     marcas = await marcas_renovacion.findAndCountAll({
@@ -41,7 +43,7 @@ router.all('/dashboard',async (req,res) =>{
     attributes: [Sequelize.fn('DISTINCT', Sequelize.col('clasificacion_niza')), 'clasificacion_niza']
   });
   res.render('dashboard.ejs', {marcas: marcas.rows, situacion: situacion, clase: clase, clasificacion: clasificacion, 
-                              page: limit, size: size });
+                              page: page, size: limit, filter: filter });
  });
 
  module.exports = router

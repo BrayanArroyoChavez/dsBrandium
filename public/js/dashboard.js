@@ -1,8 +1,8 @@
 const fn = {};
 
 //Función para cambiar la cantidad de registros que se muestran por página
-function changeAction(val){
-    $("#size").submit();
+function changeAction(){
+    $("#filter").submit();
 }
 
 //Función para establecer las condiciones de filtrado
@@ -48,6 +48,27 @@ function getCondicion(req, Op){
     return where;
 }
 
+function getFiltro(req){
+  filter = {};
+  if (req.query.Situacion != 'null' && req.query.Situacion){
+    filter.situacion = req.query.Situacion;
+  }
+  if (req.query.Clasificacion != 'null' && req.query.Clasificacion){
+    filter.clasificacion = req.query.Clasificacion;
+  }
+  if (req.query.Clase != 'null' && req.query.Clase){
+    filter.clase = req.query.Clase;
+  }
+  if (req.query.Telefono != undefined){
+    filter.telefono = req.query.Telefono;
+  }
+  if (req.query.Correo != undefined){
+    filter.correo = req.query.Correo;
+  }
+  return filter;
+}
+
 fn.getCondicion = getCondicion
+fn.getFiltro = getFiltro
 
 module.exports = fn;
