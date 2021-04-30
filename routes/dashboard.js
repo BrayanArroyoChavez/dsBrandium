@@ -18,16 +18,12 @@ router.all('/dashboard',async (req,res) =>{
   
   if (where.length != 0){
     marcas = await marcas_renovacion.findAndCountAll({
-      where: where,
-      offset: offset,
-      limit: limit
+      where: where
     }).then(result => {
       return result
     });
   }else{
     marcas = await marcas_renovacion.findAndCountAll({
-      offset: offset,
-      limit: limit
     }).then(result => {
       return result
     });
