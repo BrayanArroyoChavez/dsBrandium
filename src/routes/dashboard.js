@@ -5,7 +5,7 @@ const { Op, Sequelize } = require('sequelize');
 const { marcas_renovacion } = require('../connection')
 const fn = require('../public/js/dashboard.js')
 
-router.GET('/dashboard',async (req,res) =>{
+router.get('/dashboard',async (req,res) =>{
   const page = parseInt(req.query.Page) || 1;
   const limit = parseInt(req.query.Size) || 50;
   
