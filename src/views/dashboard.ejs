@@ -84,34 +84,39 @@
             </div>
             <table class="table" id="marcas" class="table table-striped">
                 <thead>
-                  <tr>
-                    <th scope="col">Número de solicitud</th>
-                    <th scope="col">Número de registro</th>
-                    <th scope="col">Nombre de la marca</th>
-                    <th scope="col">Clasificación</th>
-                    <th scope="col">Tipo de DPI</th>
-                    <th scope="col">Tipo de marca</th>
-                    <th scope="col">Clase</th>
-                    <th scope="col">Productos y/o servicios</th>
-                    <th scope="col">Situación</th>
-                    <th scope="col">Fecha de solicitud</th>
-                    <th scope="col">Fecha de registro</th>
-                    <th scope="col">Fecha de vencimiento</th>
-                    <th scope="col">Nombre del solicitante</th>
-                    <th scope="col">Teléfono del solicitante</th>
-                    <th scope="col">Correo del solicitante</th>
-                    <th scope="col">País del solicitante</th>
-                    <th scope="col">Municipio del solicitante</th>
-                    <th scope="col">Dirección del solicitante</th>
-                    <th scope="col">Código postal del solicitante</th>
-                    <th scope="col">Nombre del representante</th>
-                    <th scope="col">Teléfono del representante</th>
-                    <th scope="col">Correo del representante</th>
-                    <th scope="col">País del representante</th>
-                    <th scope="col">Municipio del representante</th>
-                    <th scope="col">Dirección del representante</th>
-                    <th scope="col">Código postal del representante</th>
-                  </tr>
+                    <tr>
+                        <th scope="col" colspan="12">Marca</th>
+                        <th scope="col" colspan="7">Solicitante</th>
+                        <th scope="col" colspan="7">Representante</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Número de solicitud</th>
+                        <th scope="col">Número de registro</th>
+                        <th scope="col">Nombre de la marca</th>
+                        <th scope="col">Clasificación</th>
+                        <th scope="col">Tipo de DPI</th>
+                        <th scope="col">Tipo de marca</th>
+                        <th scope="col">Clase</th>
+                        <th scope="col">Productos y/o servicios</th>
+                        <th scope="col">Situación</th>
+                        <th scope="col">Fecha de solicitud</th>
+                        <th scope="col">Fecha de registro</th>
+                        <th scope="col">Fecha de vencimiento</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Correo electrónico</th>
+                        <th scope="col">País</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Código postal</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Correo electrónico</th>
+                        <th scope="col">País</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Código postal</th>
+                    </tr>
                 </thead>
                 <tbody>
                   <% marcas.forEach(function(marca) { %>
@@ -192,7 +197,7 @@
             },
             columnDefs: [
                 {
-                    targets: [0, 1, 2, 4, 5, 9, 10, 11],
+                    targets: [0, 1, 2, 4, 5, 9, 10, 11, 18, 25],
                     className: 'text-nowrap'
                 }
             ],
