@@ -15,7 +15,9 @@
 <body>
     <div class="wrapper">
         <div class="header">
-            <p>cabeza de página</p>
+            <nav class="navbar fixed-top  navbar-expand-lg navbar-light bg-tm">
+                <p><b>Brandium</b></p>
+            </nav>
         </div>
         <div class="content">
             <div class="filter">
@@ -77,7 +79,7 @@
                         Disponible
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                    <button type="submit" class="ds-button">Filtrar</button>
                 </form>
             </div>
             <table class="table" id="marcas" class="table table-striped">
@@ -184,15 +186,22 @@
                     "first":      "Inicio",
                     "last":       "Fin",
                     "next":       "Siguiente",
-                    "previous":   "Anterior"
+                    "previous":   "Anterior",
+                    className: 'bg-secondary'
                 }
             },
-            dom: "Bliptip",
+            columnDefs: [
+                {
+                    targets: [0, 1, 2, 4, 5, 9, 10, 11],
+                    className: 'text-nowrap'
+                }
+            ],
+            dom: 'Bliptip',
             buttons:[
             {
                 extend: "excel",
-                text:'Exportar a Excel',
-                className:'btn btn-outline-success',
+                text:'<span class="prueba">Exportar a Excel</span>',
+                className:'ds-button',
             }
             ]
         });

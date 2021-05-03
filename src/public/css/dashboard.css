@@ -1,4 +1,6 @@
-* { box-sizing: border-box;}
+* { 
+    box-sizing: border-box;
+}
 
 html,
 body {
@@ -6,36 +8,45 @@ body {
     margin: 0;
 }
 
+.ds-button{
+    background-color: #434d54 !important;
+    color: #fff !important;
+    padding: 0.5em 1em !important;
+    text-align: center !important;
+    border-radius: 5px !important;
+    border: 10px !important;
+}
+
+.page-item.active .page-link {
+    background-color: #00b3a1 !important;
+    border-color: #000000 !important;
+}
+
+.page-link{
+    color: #000;
+}
+
 .wrapper {
     display: grid;
-    grid-template-rows: minmax(0, auto) minmax(0, auto) minmax(0, auto) minmax(0, auto);
-    grid-gap: 10px;
+    grid-template-rows: minmax(1fr, auto) minmax(1fr, auto) minmax(1fr, auto);
 }
 
-.option{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px,2fr));
-    grid-gap: 10px;
-    align-items: center;
-    justify-items: center;
+.header{
+    color: #000;
+    z-index: 99;
+    background-color: #fff;  
 }
 
-.option p{
-    margin: 0;
-}
-
-.option .pagination{
-    margin: 0;
-}
-
-.option .form-select{
-    width: auto;
-    vertical-align: middle;
-    display: inline-block;
+.header nav{
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    padding: .5rem 1rem;
 }
 
 .content{
     display: flex;
+    position: relative;
+    padding-top: 5em;
 }
 
 .content .filter{
@@ -52,5 +63,9 @@ body {
 
 .filter button{
     margin-top: 30px;
+}
+
+.footer{
+    background-color: rgba(0, 0, 0, 0.9);
 }
 

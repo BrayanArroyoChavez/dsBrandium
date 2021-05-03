@@ -12,9 +12,6 @@ router.get('/dashboard',async (req,res) =>{
   let offset = (limit*page) - limit;
   const where = fn.getCondicion(req,Op);
   const filter = fn.getFiltro(req);
-
-  console.log(where);
-  console.log(filter);
   
   if (where.length != 0){
     marcas = await marcas_renovacion.findAndCountAll({
