@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const marcas_renovacionModel = require('./models/marcas_renovacion');
+const marcas_renovacionModel = require('../models/marcas_renovacion');
 
 const sequelize = new Sequelize('kampsys','root','',{
   host     : 'localhost',
