@@ -44,6 +44,7 @@ function getCondicion(req, Op){
     return where;
 }
 
+//Función para determinar los filtros que se aplicaron
 function getFiltro(req){
   filter = {};
   if (req.query.Situacion != 'null' && req.query.Situacion){
@@ -64,6 +65,7 @@ function getFiltro(req){
   return filter;
 }
 
+//Se exportan las funciones
 fn.getCondicion = getCondicion
 fn.getFiltro = getFiltro
 
