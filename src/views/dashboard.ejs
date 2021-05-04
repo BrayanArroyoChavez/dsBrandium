@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--Inicio del Head-->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CSS de boostrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     
+    <!--CSS del datatable-->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">    
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css">
 
+    <!--CSS propio-->
     <link href="/css/dashboard.css" rel="stylesheet" type="text/css">
     <title>Brandium</title>
 </head>
+<!--fin del Head-->
+<!--Inicio del Body-->
 <body>
+    <!--Inicio del wrapper-->
+    <!--La clase wrapper divide el body en secciones-->
     <div class="wrapper">
+        <!--Inicio del header-->
         <div class="header">
             <nav class="navbar fixed-top  navbar-expand-lg navbar-light bg-tm">
                 <p><b>Brandium</b></p>
             </nav>
         </div>
+        <!--Fin del header-->
+        <!--Inicio del content-->
+        <!--la clase content almacena el el datatable y los filtros que se pueden aplicar-->
         <div class="content">
+            <!--Inicio de los filtros-->
             <div class="filter">
                 <form action="/dashboard" method="GET" id="filter">
                     <p>Filtros</p>
                     <label class="option-filter-title">Situación de la marca</label>
                     <select class="form-select" name="Situacion">  
                         <option value="null"></option>
+                        <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
                         <% situacion.forEach(function(s) { %>
                             <% if(filter.situacion && filter.situacion == s.situacion_marca) { %>
                                 <option selected value=<%= s.situacion_marca %> ><%= s.situacion_marca %></option>
@@ -37,6 +52,7 @@
                     <label class="option-filter-title">Número de Clasificación</label>
                     <select class="form-select" name="Clasificacion">
                         <option value="null"></option>
+                        <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
                         <% clasificacion.forEach(function(c) { %>
                             <% if(filter.clasificacion && filter.clasificacion == c.clasificacion_niza) { %>
                                 <option selected value=<%= c.clasificacion_niza %>><%= c.clasificacion_niza %></option>
@@ -48,6 +64,7 @@
                     <label class="option-filter-title">Número de clase</label>
                     <select class="form-select" name="Clase">
                         <option value="null"></option>
+                        <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
                         <% clase.forEach(function(c) { %>
                             <% if(filter.clase && filter.clase == c.clase_marca) { %>
                                 <option selected value=<%= c.clase_marca %>><%= c.clase_marca %></option>
@@ -59,6 +76,7 @@
                     </select>
                     <label class="option-filter-title">Teléfono</label>
                     <div class="form-check">
+                        <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la casilla-->
                         <% if(filter.telefono && filter.telefono == "on") { %>
                             <input class="form-check-input" type="checkbox" name="Telefono" checked>
                         <% }else{ %>
@@ -70,6 +88,7 @@
                     </div>
                     <label class="option-filter-title">Correo</label>
                     <div class="form-check">
+                         <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la casilla-->
                         <% if(filter.correo && filter.correo == "on") { %>
                             <input class="form-check-input" type="checkbox" name="Correo" checked>
                         <% }else{ %>
@@ -82,6 +101,8 @@
                     <button type="submit" class="ds-button">Filtrar</button>
                 </form>
             </div>
+            <!--Fin de los filtros-->
+            <!--Inicio de la tabla-->
             <table class="table" id="marcas" class="table table-striped">
                 <thead>
                     <tr>
@@ -119,6 +140,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!--Se cargan los datos de la base de datos-->
                   <% marcas.forEach(function(marca) { %>
                     <tr>
                       <th scope="row"><%= marca.no_solicitud %></th>
@@ -151,11 +173,16 @@
                   <% }); %>
                 </tbody>
               </table>
+              <!--Fin de la tabla-->
         </div>
+        <!--Fin del content-->
+        <!--Inicio del footer-->
         <div class="footer">
             <p>pie de página</p>
         </div>
+        <!--Fin del footer-->
     </div>
+    <!--fin del wrapper-->
 
     <!-- jquery y bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>   
@@ -170,19 +197,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 
+    <!--Script para configurar el datatable empleado-->
     <script>
         $(document).ready( function () {
         $('#marcas').DataTable({
             "responsive": true,
+            //Habilita la paginación en el datatable
             "paging": true,
+            //Habilita la opción que permite modificar la cantidad de registros que se muestran por página en el datatable
             "lengthChange": true,
+            //Se determina las opciones de distribución de registros
             "lengthMenu": [ [50, 100, 250, 500, -1], [50, 100, 250, 500, "All"] ],
+            //Cantidad inicial que se mostran en el datatable la primera vez que semuestra
             "pageLength": 50,
+            //Se deshabilito la funciónn de busqueda
             searching: false,
+            //Se deshabilito la funciónn de ordenamiento
             ordering:  false,
+            //Ajuste de los mensajes que se muestran en el datables
             "language": {
                 "info":           "Mostrando _START_ a _END_ de _TOTAL_ registros",
                 "infoEmpty":      "Mostrando 0 a 0 de 0 registros",
@@ -195,15 +228,28 @@
                     className: 'bg-secondary'
                 }
             },
+            //Configuración de las columnas del datable
             columnDefs: [
-                {
+                {   
+                    //Columnmas afectadas
                     targets: [0, 1, 2, 4, 5, 9, 10, 11, 18, 25],
+                    //La clase text-nowrap hace que el texto contenida en las celdas se muestre en un solo renglon
                     className: 'text-nowrap'
                 }
             ],
+            /*
+            Se configura el acomodo de los elementos
+            B-Botón
+            l-Menú para determinar el número de registros por página
+            i-información del datatable - número de registros que se estan mostrando
+            p-paginación
+            t-tabla
+            */
             dom: 'Bliptip',
+            //Configuración de los botones del datatable
             buttons:[
             {
+                //Botón para exportar a excel los datos resultantes
                 extend: "excel",
                 text:'<span class="prueba">Exportar a Excel</span>',
                 className:'ds-button',
@@ -212,7 +258,6 @@
         });
         } );
     </script>
-
-    <script  type="text/javascript" src="/js/dashboard.js"></script>
 </body>
+<!--Fin del Body-->
 </html>
