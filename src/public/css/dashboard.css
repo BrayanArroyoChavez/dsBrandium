@@ -8,6 +8,7 @@ body {
     margin: 0;
 }
 
+/*CSS para los botones de filtro y para exportar en excel*/
 .ds-button{
     background-color: #434d54 !important;
     color: #fff !important;
@@ -17,6 +18,7 @@ body {
     border: 10px !important;
 }
 
+/*CSS para los botones de paginación*/
 .page-item.active .page-link {
     background-color: #00b3a1 !important;
     border-color: #000000 !important;
@@ -26,45 +28,54 @@ body {
     color: #000;
 }
 
+/*wrapper divide en secciones el cuerpo de la página para posicionar los difrentes elementos*/
 .wrapper {
     display: grid;
     grid-template-rows: minmax(1fr, auto) minmax(1fr, auto) minmax(1fr, auto);
 }
 
+/*CSS para la cabeza de la página*/
 .header{
     color: #000;
     z-index: 99;
     background-color: #fff;  
 }
 
+/*CSS para el nav utilizado en la cabeza de la página*/
 .header nav{
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     padding: .5rem 1rem;
 }
 
+/*CSS para el contenido de la página que almacena la tabla de datos y las opciones filtrado*/
 .content{
     display: flex;
     position: relative;
     padding-top: 5em;
 }
 
+/*CSS para la sección de filtros posionada dentro de la clase content*/
 .content .filter{
     width: 30vw;
 }
 
+/*CSS para las etiquetas div dentro de la clase content*/
 .content div{
     margin:0 30px 0 10px;
 }
 
+/*CSS para los titulos de las opciones definidas en los filtros dentro de la clase content*/
 .content .option-filter-title{
     margin-top: 30px;
 }
 
+/*CSS para el botón ubicado dentro de clase filter*/
 .filter button{
     margin-top: 30px;
 }
 
+/*CSS para el footer de la página*/
 .footer{
     background-color: rgba(0, 0, 0, 0.9);
 }
