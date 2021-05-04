@@ -1,3 +1,5 @@
+//Modelo de la tabla de marcas_renovacion
+//Se definen los campos de la tabla y el tipo de dato de cada uno
 module.exports = (sequelize, type) => {
     return sequelize.define('marcas_renovacion',{
         id:{
