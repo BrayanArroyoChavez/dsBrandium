@@ -41,8 +41,6 @@ module.exports = (sequelize, type) => {
         band_completo:{
             type: type.BOOLEAN,
             defaultValue: 0
-        },
-        createdAt: false,
-        updatedAt: false
+        }
     })
 }
