@@ -19,7 +19,7 @@ module.exports = (sequelize, type) => {
         tipo_dpi: type.STRING,
         tipo_marca: type.STRING,
         clase_marca: type.STRING,
-        producto_servicio: type.STRING(500),
+        producto_servicio: type.STRING,
         fecha_solicitud: type.DATEONLY,
         fecha_registro: type.DATEONLY,
         fecha_vencimiento: type.DATEONLY,
