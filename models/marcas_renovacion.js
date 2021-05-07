@@ -7,10 +7,13 @@ module.exports = (sequelize, type) => {
             primaryKey: true,
             autoIncrement: true
         },
-        no_solicitud: type.STRING,
+        no_solicitud: {
+            unique: true,
+            type: type.STRING
+        },
         detalles_url: type.STRING,
         situacion_marca: type.STRING,
-        clasificacion_niza: type.INTEGER,
+        clasificacion_niza: type.STRING,
         nombre_marca: type.STRING,
         no_registro: type.STRING,
         tipo_dpi: type.STRING,
