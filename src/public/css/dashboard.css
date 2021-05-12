@@ -73,6 +73,7 @@ body {
 /*CSS para el botón ubicado dentro de clase filter*/
 .filter button{
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 /*CSS para el footer de la página*/
