@@ -74,6 +74,14 @@
                             
                         <% }); %>
                     </select>
+                    <label class="option-filter-title">Marca</label>
+                    <input name="marca" type="text" class="form-control">
+                    <label class="option-filter-title">Nombre del solicitante</label>
+                    <input name="n_solicitante" type="text" class="form-control">
+                    <label class="option-filter-title">Nombre del representante</label>
+                    <input name="n_representante" type="text" class="form-control">
+                    <label class="option-filter-title">Municipio</label>
+                    <input name="municipio" type="text" class="form-control">
                     <label class="option-filter-title">Teléfono</label>
                     <div class="form-check">
                         <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la casilla-->
@@ -232,7 +240,7 @@
             columnDefs: [
                 {   
                     //Columnmas afectadas
-                    targets: [0, 1, 2, 4, 5, 9, 10, 11, 18, 25],
+                    targets: [0, 1, 4, 5, 9, 10, 11, 18, 25],
                     //La clase text-nowrap hace que el texto contenida en las celdas se muestre en un solo renglon
                     className: 'text-nowrap'
                 }
