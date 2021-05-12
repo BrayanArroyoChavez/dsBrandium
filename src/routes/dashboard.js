@@ -18,6 +18,7 @@ router.get('/dashboard',async (req,res) =>{
   //Se determian las opciones de filtrado seleccionadas para marcarlas como seleccionadas en la página
   const filter = fn.getFiltro(req);
   
+  console.log(where)
   //Dado que la función getCondicion devuelve un arreglo se valida si es diferente de 0 para determinar si hay condiciones de filtrado
   if (where.length != 0){ 
     //Función para extraer de la base de datos las marcas registradas con las condiciones determinadas
@@ -33,7 +34,7 @@ router.get('/dashboard',async (req,res) =>{
       return result
     });
   }
-  
+  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
   //Función para extraer de la base de datos los distintos valores que tiene el campo que registra la situación de la marca
   //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
   situacion = await marcas_renovacion.findAll({

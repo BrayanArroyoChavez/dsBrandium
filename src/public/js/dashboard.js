@@ -17,16 +17,16 @@ function getCondicion(req, Op){
       where.push({nombre_marca : req.query.Marca});
     }
     if (req.query.n_solicitante != 'null' && req.query.n_solicitante){
-      where.push({nombre_solicitante : req.query.n_solicitante});
+      where.push({nombre_solicitante : {[Op.substring] : req.query.n_solicitante}});
     }
     if (req.query.n_representante != 'null' && req.query.n_representante){
-      where.push({nombre_representante : req.query.n_representante});
+      where.push({nombre_representante : {[Op.substring] : req.query.n_representante}});
     }
     if (req.query.m_solicitante != 'null' && req.query.m_solicitante){
-      where.push({municipio_solicitante : req.query.m_solicitante});
+      where.push({municipio_solicitante : {[Op.substring] : req.query.m_solicitante}});
     }
     if (req.query.m_representante != 'null' && req.query.m_representante){
-      where.push({ciudad_representante : req.query.m_representante});
+      where.push({ciudad_representante : {[Op.substring] : req.query.m_representante}});
     }
   
     if(req.query.telefono != undefined && req.query.correo != undefined){
