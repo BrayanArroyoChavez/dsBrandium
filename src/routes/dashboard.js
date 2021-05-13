@@ -34,7 +34,6 @@ router.get('/dashboard',async (req,res) =>{
       return result
     });
   }
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
   //Función para extraer de la base de datos los distintos valores que tiene el campo que registra la situación de la marca
   //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
   situacion = await marcas_renovacion.findAll({

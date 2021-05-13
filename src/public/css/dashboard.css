@@ -31,7 +31,7 @@ body {
 /*wrapper divide en secciones el cuerpo de la página para posicionar los difrentes elementos*/
 .wrapper {
     display: grid;
-    grid-template-rows: minmax(1fr, auto) minmax(1fr, auto) minmax(1fr, auto);
+    grid-template-rows: minmax(1fr, auto) minmax(1fr, auto)     minmax(1fr, auto) minmax(1fr, auto);
 }
 
 /*CSS para la cabeza de la página*/
@@ -48,16 +48,45 @@ body {
     padding: .5rem 1rem;
 }
 
+/*CSS para la sección de filtros posionada dentro de la clase content*/
+.filter{
+    background-color: rgb(160, 192, 162);
+    width: 100vw;
+    padding-top: 5em;
+    padding-left: 1em;
+}
+
+/*CSS para los titulos de las opciones definidas en los filtros*/
+.filter .option-filter-title{
+    margin-top: 1em;
+}
+
+/*CSS para el botón ubicado dentro de clase filter*/
+.filter button{
+    position: relative;
+    width: 5%;
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.filter select{
+    width: 120px !important;
+}
+
+.filter .form-control{
+    width: 200px !important;
+}
+
+.filter .form-check{
+    padding-top: 3em;
+}
+
 /*CSS para el contenido de la página que almacena la tabla de datos y las opciones filtrado*/
 .content{
     display: flex;
     position: relative;
-    padding-top: 5em;
-}
-
-/*CSS para la sección de filtros posionada dentro de la clase content*/
-.content .filter{
-    width: 20vw;
+    margin-top: 1em;
 }
 
 /*CSS para las etiquetas div dentro de la clase content*/
@@ -65,16 +94,6 @@ body {
     margin:0 30px 0 10px;
 }
 
-/*CSS para los titulos de las opciones definidas en los filtros dentro de la clase content*/
-.content .option-filter-title{
-    margin-top: 30px;
-}
-
-/*CSS para el botón ubicado dentro de clase filter*/
-.filter button{
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
 
 /*CSS para el footer de la página*/
 .footer{
