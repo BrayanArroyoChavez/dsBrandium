@@ -56,6 +56,10 @@ body {
     padding-left: 1em;
 }
 
+.filter form{
+    width: 70vw;
+}
+
 /*CSS para los titulos de las opciones definidas en los filtros*/
 .filter .option-filter-title{
     margin-top: 1em;

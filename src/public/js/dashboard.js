@@ -29,7 +29,7 @@ function getCondicion(req, Op){
       where.push({ciudad_representante : {[Op.substring] : req.query.m_representante}});
     }
   
-    if(req.query.telefono != undefined && req.query.correo != undefined){
+    if(req.query.Telefono != undefined && req.query.Correo != undefined){
       console.log(req.query.telefono)
       where.push({
         [Op.or] : [
