@@ -51,7 +51,6 @@ body {
 /*CSS para la sección de filtros posionada dentro de la clase content*/
 .filter{
     background-color: rgb(160, 192, 162);
-    width: 100vw;
     padding-top: 5em;
     padding-left: 1em;
 }
