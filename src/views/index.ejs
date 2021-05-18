@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css">
 
     <!--CSS propio-->
-    <link href="/css/dashboard.css" rel="stylesheet" type="text/css">
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
+
+    <!--CSS datepicker-->
+    <link rel="stylesheet" type="text/css" href="/datepicker/css/bootstrap-datepicker.standalone.css">
     <title>Brandium</title>
 </head>
 <!--fin del Head-->
@@ -34,7 +37,17 @@
         <!--Inicio del content-->
         <!--la clase content almacena el el datatable y los filtros que se pueden aplicar-->
         <div class="content">
-            
+            <div class="card">
+                <div class="card-body row align-items-center">
+                    <div class="d-grid gap-2 col-6 mx-auto row align-items-center">
+                        <div class="input-group">
+                            <input name="fsStart" type="text" class="form-control datepicker" aria-describedby="basic-addon3">
+                            <span class="input-group-text">-</span>
+                            <input name="fsEnd" type="text" class="form-control datepicker" aria-describedby="basic-addon3">
+                        </div>
+                      </div>
+                </div>
+              </div>
         </div>
         <!--Fin del content-->
         <!--Inicio del footer-->
@@ -48,6 +61,20 @@
     <!-- jquery y bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <!--JS para el funcionamiento del datepicker-->
+    <script src="datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="datepicker/locales/bootstrap-datepicker.es.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.datepicker').datepicker({
+                language: "es",
+                format: 'dd/mm/yyyy',
+                endDate: new Date()
+            });
+        });
+    </script>
 </body>
 <!--Fin del Body-->
 </html>

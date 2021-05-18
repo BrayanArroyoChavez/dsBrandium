@@ -31,7 +31,7 @@ body {
 /*wrapper divide en secciones el cuerpo de la página para posicionar los difrentes elementos*/
 .wrapper {
     display: grid;
-    grid-template-rows: minmax(1fr, auto) minmax(1fr, auto)     minmax(1fr, auto) minmax(1fr, auto);
+    grid-template-rows: minmax(1fr, auto) minmax(1fr, auto) minmax(1fr, auto) minmax(1fr, auto);
 }
 
 /*CSS para la cabeza de la página*/
