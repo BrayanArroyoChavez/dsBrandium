@@ -1,9 +1,18 @@
+//Se importa la función para cambiar el formato de fecha solicitado por mysql
+const f = require('./fecha')
+
 //Se hace uso de la constante fn para almacenar las funciones y posteriormente exportarlas
 const fn = {};
 
 //Función para establecer las condiciones de filtrado
 function getCondicion(req, Op){
     where = [];
+    if (req.query.fsStart != 'null' && req.query.fsStart && req.query.fsEnd != 'null' && req.query.fsEnd){
+      where.push({fecha_solicitud : {[Op.between] : [f.DateFormat(req.query.fsStart), f.DateFormat(req.query.fsEnd)]}});
+    }
+    if (req.query.frStart != 'null' && req.query.frStart && req.query.frEnd != 'null' && req.query.frEnd){
+      where.push({fecha_solicitud : {[Op.between] : [f.DateFormat(req.query.frStart), f.DateFormat(req.query.frEnd)]}});
+    }
     if (req.query.Situacion != 'null' && req.query.Situacion){
       where.push({situacion_marca : req.query.Situacion});
     }
@@ -35,14 +44,14 @@ function getCondicion(req, Op){
         [Op.or] : [
           {[Op.or] : [{ telefono_solicitante: {[Op.not]:""} },{ telefono_representante: {[Op.not]:""} }]},   
           {[Op.or] : [{ correo_solicitante: {[Op.not]:""} },{ correo_representante: {[Op.not]:""} }]}
-      ]})
+      ]});
     }else{
       if (req.query.Telefono != undefined){
         where.push({
           [Op.or] : [
             { telefono_solicitante: {[Op.not]:""} },
             { telefono_representante: {[Op.not]:""} }
-        ]})
+        ]});
         //where.telefono_solicitante =  {[Op.not]:""};
         //where.telefono_representante =  {[Op.not]:""};
       }
@@ -51,7 +60,7 @@ function getCondicion(req, Op){
           [Op.or] : [
             { correo_solicitante: {[Op.not]:""} },
             { correo_representante: {[Op.not]:""} }
-        ]})
+        ]});
         //where.correo_solicitante =  {[Op.not]:""};
         //where.correo_representante =  {[Sequelize.Op.not]:""};
       }
