@@ -13,7 +13,12 @@ const fn = require('../public/js/dashboard.js')
 
 //Ruta principal
 router.get('/',async (req,res) =>{
-  res.render('index.ejs');
+  marcas = await marcas_renovacion.findAndCountAll({
+  }).then(result => {
+    return result
+  });
+
+  res.render('index.ejs', {marcas: marcas.count});
 });
 
 //Ruta para mostrar el dashboard

@@ -53,3 +53,11 @@ body {
 .footer{
     background-color: rgba(0, 0, 0, 0.9);
 }
+
+.text-center {
+    text-align: center;
+}
+
+.btn{
+    margin-top: 1em !important;
+}

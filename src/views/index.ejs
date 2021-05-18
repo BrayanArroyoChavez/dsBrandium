@@ -33,18 +33,30 @@
             </nav>
         </div>
         <!--Fin del header-->
-        
         <!--Inicio del content-->
         <!--la clase content almacena el el datatable y los filtros que se pueden aplicar-->
         <div class="content">
             <div class="card">
                 <div class="card-body row align-items-center">
+                    <h3 class="text-center" >Actualmente se encuentran <%= marcas %> marcas registradas</h3>
                     <div class="d-grid gap-2 col-6 mx-auto row align-items-center">
-                        <div class="input-group">
-                            <input name="fsStart" type="text" class="form-control datepicker" aria-describedby="basic-addon3">
-                            <span class="input-group-text">-</span>
-                            <input name="fsEnd" type="text" class="form-control datepicker" aria-describedby="basic-addon3">
-                        </div>
+                        <form id="busqueda" method="GET" action="/dashboard">
+                            <label class="form-label">Fecha de solicitud</label>
+                            <div class="input-group">
+                                <input name="fsStart" type="text" class="form-control datepicker" aria-describedby="basic-addon3">
+                                <span class="input-group-text">-</span>
+                                <input name="fsEnd" type="text" class="form-control datepicker" aria-describedby="basic-addon3">
+                            </div>
+                            <label class="form-label">Fecha de registro</label>
+                            <div class="input-group">
+                                <input name="frStart" type="text" class="form-control datepicker" aria-describedby="basic-addon3">
+                                <span class="input-group-text">-</span>
+                                <input name="frEnd" type="text" class="form-control datepicker" aria-describedby="basic-addon3">
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="submit" class="btn btn-info" >Buscar</button>
+                            </div>
+                        </form>
                       </div>
                 </div>
               </div>
