@@ -236,7 +236,8 @@
     <script>
         $(document).ready( function () {
         $('#marcas').DataTable({
-            "deferRender": true,
+            "processing": true,
+            "orderClasses": false,
             "responsive": true,
             //Habilita la paginación en el datatable
             "paging": true,

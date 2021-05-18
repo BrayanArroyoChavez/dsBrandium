@@ -20,7 +20,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 
 //Rutas
-app.use(require('./routes/dashboard'));
+app.use(require('./routes/routes'));
 
 //Conexión al servidor
 app.listen(app.get('port'), () =>{

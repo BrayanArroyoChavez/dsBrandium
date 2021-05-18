@@ -11,6 +11,11 @@ const { marcas_renovacion } = require('../connection')
 //Se importan las funciones contenidas en el archivo dashboard.js 
 const fn = require('../public/js/dashboard.js')
 
+//Ruta principal
+router.get('/',async (req,res) =>{
+  res.render('index.ejs');
+});
+
 //Ruta para mostrar el dashboard
 router.get('/dashboard',async (req,res) =>{
   //Se derminan las condiciones de filtrado en caso de que se hayan aplicado
