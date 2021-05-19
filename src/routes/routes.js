@@ -8,6 +8,8 @@ const { Op, Sequelize } = require('sequelize');
 //Se importa el modelo de la tabla de marcas_renovacion
 const { marcas_renovacion } = require('../connection')
 
+const f = require('../public/js/fecha')
+
 //Se importan las funciones contenidas en el archivo dashboard.js 
 const fn = require('../public/js/dashboard.js')
 
@@ -18,7 +20,41 @@ router.get('/',async (req,res) =>{
     return result
   });
 
-  res.render('index.ejs', {marcas: marcas.count});
+  fsEnd = await marcas_renovacion.findAll({
+    attributes: [[Sequelize.fn('max', Sequelize.col('fecha_solicitud')), 'fsEnd']],
+    raw: true
+  }).then(result => {
+    return result[0].fsEnd
+  });
+
+  fsStart = await marcas_renovacion.findAll({
+    attributes: [[Sequelize.fn('min', Sequelize.col('fecha_solicitud')), 'fsStart']],
+    raw: true,
+    where: {
+      fecha_registro: {[Op.gt]:0000-00-00}
+    }
+  }).then(result => {
+    return result[0].fsStart
+  });
+
+  frEnd = await marcas_renovacion.findAll({
+    attributes: [[Sequelize.fn('max', Sequelize.col('fecha_registro')), 'frEnd']],
+    raw: true
+  }).then(result => {
+    return result[0].frEnd
+  });
+
+  frStart = await marcas_renovacion.findAll({
+    attributes: [[Sequelize.fn('min', Sequelize.col('fecha_registro')), 'frStart']],
+    raw: true,
+    where: {
+      fecha_registro: {[Op.gt]:0000-00-00}
+    }
+  }).then(result => {
+    return result[0].frStart
+  });
+
+  res.render('index.ejs', {marcas: marcas.count, frStart: f.DateFormatmarca(frStart), frEnd: f.DateFormatmarca(frEnd), fsStart: f.DateFormatmarca(fsStart), fsEnd: f.DateFormatmarca(fsEnd)});
 });
 
 //Ruta para mostrar el dashboard
