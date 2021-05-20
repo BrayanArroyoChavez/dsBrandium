@@ -5,12 +5,20 @@
 
 <h2>Documentación</h2>
 <p>Dentro de la carpeta se encuentran los modelos de las base de datos los cuales describen los campos que se contienen las tablas con los características de cada uno de ellos</p>
-<p>Dentro de la carpeta public se encuentra el codigo de javascript y CSS emplado para las vistas</p>
+<p>Dentro de la carpeta public se encuentra el codigo de javascript, el CSS emplado para las vistas y la carpeta de datapicker con el css, js y archivos locales necesarios para su uso</p>
 <p>Dentro de la carpeta routes se encuentran las rutas de nevegación de la página</p>
 <p>Dentro de la carpeta views se encuentran los archivos ejs que contienen el código html empleado</p>
 <p>El archivo connecion.js contiene la conexión a la base de datos</p>
 <p>El archivo index.js es el archivo de arranque del sistema el cual contiene las configuraciones necesarias para su uso</p>
 
+<h2>Dependencias utilizadas</h2>
+<p>body-parser</p>
+<p>ejs</p>
+<p>express</p>
+<p>morgan</p>
+<p>mysql</p>
+<p>sequelize</p>
+<p>nodemon</p>
 
 <h2>Prueba en linea</h2>
 <p>Para probar el código en línea ingrese al siguiente enlace</p>
