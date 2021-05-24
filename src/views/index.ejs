@@ -54,13 +54,27 @@
                                 <input name="frEnd" type="text" class="form-control frDatepicker" aria-describedby="basic-addon3">
                             </div>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button type="submit" class="btn btn-info" >Buscar</button>
+                                <button id="modal-open" type="submit" class="btn btn-info" >Buscar</button>
                             </div>
                         </form>
                       </div>
                 </div>
               </div>
         </div>
+        <!--Inicio modal de carga-->
+        <div class="modal" id="carga" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cargando marcas</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>Este proceso podria tardar unos minutos</p>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <!--fin del  modal de carga-->
         <!--Fin del content-->
         <!--Inicio del footer-->
         <div class="footer">
@@ -94,6 +108,10 @@
                 startDate:  JSON.parse('<%- JSON.stringify(fsStart) %>')
             });
         });
+
+        $('#modal-open').click(function(){
+            $('#carga').modal('show')
+        })
     </script>
 </body>
 <!--Fin del Body-->
