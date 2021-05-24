@@ -237,7 +237,7 @@
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
 
 
-    <!--Script para configurar el datatable empleado-->
+    <!--Script para limpiar los filtros del datatable-->
     <script>
         $("#delete-filter").click(function() {
             var url = document.location + '';
@@ -253,6 +253,9 @@
             url = url.split('?')[0] + '?' + parm.substring(1);
             location.href=url
         });
+    </script>
+    <!--Script para configurar el datatable empleado-->
+    <script>
         $(document).ready( function () {
         $('#marcas').DataTable({
             "processing": true,
