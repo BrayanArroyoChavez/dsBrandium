@@ -7,12 +7,29 @@ const fn = {};
 //Función para establecer las condiciones de filtrado
 function getCondicion(req, Op){
     where = [];
+    where.push({band_completo : 1});
     if (req.query.fsStart != 'null' && req.query.fsStart && req.query.fsEnd != 'null' && req.query.fsEnd){
       where.push({fecha_solicitud : {[Op.between] : [f.DateFormatmysql(req.query.fsStart), f.DateFormatmysql(req.query.fsEnd)]}});
+    }else{
+     if( req.query.fsStart != 'null' && req.query.fsStart){
+      where.push({fecha_solicitud : {[Op.gte] : f.DateFormatmysql(req.query.fsStart)}});
+     }else{
+       if(req.query.fsEnd != 'null' && req.query.fsEnd){
+        where.push({fecha_solicitud : {[Op.lte] : f.DateFormatmysql(req.query.fsEnd)}});
+       }
+     }
     }
     if (req.query.frStart != 'null' && req.query.frStart && req.query.frEnd != 'null' && req.query.frEnd){
       where.push({fecha_registro : {[Op.between] : [f.DateFormatmysql(req.query.frStart), f.DateFormatmysql(req.query.frEnd)]}});
-    }
+    }else{
+      if( req.query.frStart != 'null' && req.query.frStart){
+       where.push({fecha_registro : {[Op.gte] : f.DateFormatmysql(req.query.frStart)}});
+      }else{
+        if(req.query.frEnd != 'null' && req.query.frEnd){
+          where.push({fecha_registro : {[Op.lte] : f.DateFormatmysql(req.query.frEnd)}});
+         }
+      }
+     }
     if (req.query.Situacion != 'null' && req.query.Situacion){
       where.push({situacion_marca : req.query.Situacion});
     }

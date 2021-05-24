@@ -76,6 +76,9 @@ router.get('/dashboard',async (req,res) =>{
   }else{
     //Función para extraer de la base de datos las marcas registradas
     marcas = await marcas_renovacion.findAndCountAll({
+      where:{
+        band_completo : 1
+      }
     }).then(result => {
       return result
     });
