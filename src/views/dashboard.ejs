@@ -133,7 +133,8 @@
                 <input class="form-control" name="fsEnd" type="hidden" value="<%= fsEnd %>">
                 <input class="form-control" name="frStart" type="hidden" value="<%= frStart %>">
                 <input class="form-control" name="frEnd" type="hidden" value="<%= frEnd %>">
-                <button type="submit" class="ds-button">Filtrar</button>
+                <button id="delete-filter" type="button" class="btn btn-danger">Eliminar filtros</button>
+                <button type="submit" class="ds-button">Filtrar</button>    
             </form>
         </div>
         <!--Fin de los filtros-->
@@ -238,6 +239,20 @@
 
     <!--Script para configurar el datatable empleado-->
     <script>
+        $("#delete-filter").click(function() {
+            var url = document.location + '';
+            parm = '';
+            elements = url.split('?')[1].split('&');
+            for (let i = 0; i < elements.length; i++) {
+                var element = elements[i].split('=');
+                
+                if (element[0] == 'fsStart' || element[0] == 'fsEnd' || element[0] == 'frStart' || element[0] == 'frEnd'){
+                    parm =  parm + '&' + elements[i];
+                }           
+            }
+            url = url.split('?')[0] + '?' + parm.substring(1);
+            location.href=url
+        });
         $(document).ready( function () {
         $('#marcas').DataTable({
             "processing": true,
