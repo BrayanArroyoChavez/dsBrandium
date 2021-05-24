@@ -103,7 +103,8 @@ router.get('/dashboard',async (req,res) =>{
   });
 
   //Se renderiza en la página el archivo dashboard.ejs en la ruta /dashboard y se le envian las variables determinadas en el arreglo
-  res.render('dashboard.ejs', {marcas: marcas.rows, situacion: situacion, clase: clase, clasificacion: clasificacion, filter: filter });
+  res.render('dashboard.ejs', {marcas: marcas.rows, situacion: situacion, clase: clase, clasificacion: clasificacion, filter: filter , 
+    fsStart: req.query.fsStart , fsEnd: req.query.fsEnd, frStart: req.query.frStart, frEnd: req.query.frEnd});
  });
 
  //Se exporta las rutas definidas
