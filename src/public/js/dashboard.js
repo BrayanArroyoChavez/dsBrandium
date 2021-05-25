@@ -30,17 +30,17 @@ function getCondicion(req, Op){
          }
       }
      }
-    if (req.query.Situacion != 'null' && req.query.Situacion){
-      where.push({situacion_marca : req.query.Situacion});
+    if (req.query.situacion != 'null' && req.query.situacion){
+      where.push({situacion_marca : req.query.situacion});
     }
-    if (req.query.Clasificacion != 'null' && req.query.Clasificacion){
-      where.push({clasificacion_niza : req.query.Clasificacion});
+    if (req.query.clasificacion != 'null' && req.query.clasificacion){
+      where.push({clasificacion_niza : req.query.clasificacion});
     }
-    if (req.query.Clase != 'null' && req.query.Clase){
-      where.push({clase_marca : req.query.Clase});
+    if (req.query.clase != 'null' && req.query.clase){
+      where.push({clase_marca : req.query.Claclasese});
     }
-    if (req.query.Marca != 'null' && req.query.Marca){
-      where.push({nombre_marca : req.query.Marca});
+    if (req.query.marca != 'null' && req.query.marca){
+      where.push({nombre_marca : req.query.marca});
     }
     if (req.query.n_solicitante != 'null' && req.query.n_solicitante){
       where.push({nombre_solicitante : {[Op.substring] : req.query.n_solicitante}});
@@ -54,7 +54,18 @@ function getCondicion(req, Op){
     if (req.query.m_representante != 'null' && req.query.m_representante){
       where.push({ciudad_representante : {[Op.substring] : req.query.m_representante}});
     }
-  
+    if (req.query.telefono_solicitante != undefined){
+      where.push({telefono_solicitante : {[Op.not]:""}});
+    }
+    if (req.query.telefono_representante != undefined){
+      where.push({telefono_representante : {[Op.not]:""}});
+    }
+    if (req.query.correo_solicitante != undefined){
+      where.push({correo_solicitante : {[Op.not]:""}});
+    }
+    if (req.query.correo_solicitante != undefined){
+      where.push({correo_solicitante : {[Op.not]:""}});
+    }
     if(req.query.Telefono != undefined && req.query.Correo != undefined){
       console.log(req.query.telefono)
       where.push({
@@ -62,25 +73,6 @@ function getCondicion(req, Op){
           {[Op.or] : [{ telefono_solicitante: {[Op.not]:""} },{ telefono_representante: {[Op.not]:""} }]},   
           {[Op.or] : [{ correo_solicitante: {[Op.not]:""} },{ correo_representante: {[Op.not]:""} }]}
       ]});
-    }else{
-      if (req.query.Telefono != undefined){
-        where.push({
-          [Op.or] : [
-            { telefono_solicitante: {[Op.not]:""} },
-            { telefono_representante: {[Op.not]:""} }
-        ]});
-        //where.telefono_solicitante =  {[Op.not]:""};
-        //where.telefono_representante =  {[Op.not]:""};
-      }
-      if (req.query.Correo != undefined){
-        where.push({
-          [Op.or] : [
-            { correo_solicitante: {[Op.not]:""} },
-            { correo_representante: {[Op.not]:""} }
-        ]});
-        //where.correo_solicitante =  {[Op.not]:""};
-        //where.correo_representante =  {[Sequelize.Op.not]:""};
-      }
     }  
     return where;
 }
@@ -88,20 +80,26 @@ function getCondicion(req, Op){
 //Función para determinar los filtros que se aplicaron
 function getFiltro(req){
   filter = {};
-  if (req.query.Situacion != 'null' && req.query.Situacion){
+  if (req.query.situacion != 'null' && req.query.situacion){
     filter.situacion = req.query.Situacion;
   }
-  if (req.query.Clasificacion != 'null' && req.query.Clasificacion){
-    filter.clasificacion = req.query.Clasificacion;
+  if (req.query.clasificacion != 'null' && req.query.clasificacion){
+    filter.clasificacion = req.query.clasificacion;
   }
-  if (req.query.Clase != 'null' && req.query.Clase){
+  if (req.query.clase != 'null' && req.query.clase){
     filter.clase = req.query.Clase;
   }
   if (req.query.Telefono != undefined){
-    filter.telefono = req.query.Telefono;
+    filter.telefono = req.query.telefono_solicitante;
   }
   if (req.query.Correo != undefined){
-    filter.correo = req.query.Correo;
+    filter.correo = req.query.telefono_representante;
+  }
+  if (req.query.Telefono != undefined){
+    filter.telefono = req.query.correo_solicitante;
+  }
+  if (req.query.Correo != undefined){
+    filter.correo = req.query.correo_representante;
   }
   return filter;
 }
