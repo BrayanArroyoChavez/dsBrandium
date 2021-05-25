@@ -63,8 +63,8 @@ function getCondicion(req, Op){
     if (req.query.correo_solicitante != undefined){
       where.push({correo_solicitante : {[Op.not]:""}});
     }
-    if (req.query.correo_solicitante != undefined){
-      where.push({correo_solicitante : {[Op.not]:""}});
+    if (req.query.correo_representante != undefined){
+      where.push({correo_representante : {[Op.not]:""}});
     }
     if(req.query.Telefono != undefined && req.query.Correo != undefined){
       console.log(req.query.telefono)
@@ -89,17 +89,17 @@ function getFiltro(req){
   if (req.query.clase != 'null' && req.query.clase){
     filter.clase = req.query.Clase;
   }
-  if (req.query.Telefono != undefined){
-    filter.telefono = req.query.telefono_solicitante;
+  if (req.query.telefono_solicitante != undefined){
+    filter.telefono_solicitante = req.query.telefono_solicitante;
   }
-  if (req.query.Correo != undefined){
-    filter.correo = req.query.telefono_representante;
+  if (req.query.telefono_representante != undefined){
+    filter.telefono_representante = req.query.telefono_representante;
   }
-  if (req.query.Telefono != undefined){
-    filter.telefono = req.query.correo_solicitante;
+  if (req.query.correo_solicitante != undefined){
+    filter.correo_solicitante = req.query.correo_solicitante;
   }
-  if (req.query.Correo != undefined){
-    filter.correo = req.query.correo_representante;
+  if (req.query.correo_representante != undefined){
+    filter.correo_representante = req.query.correo_representante;
   }
   return filter;
 }
