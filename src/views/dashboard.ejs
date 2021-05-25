@@ -82,6 +82,19 @@
                             <% }); %>
                         </select>
                     </div>
+                    <div class="col-auto">
+                        <div class="form-check">
+                            <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la casilla-->
+                            <% if(filter.contacto && filter.contacto == "on") { %>
+                                <input class="form-check-input" type="checkbox" name="contacto" checked>
+                            <% }else{ %>
+                                <input class="form-check-input" type="checkbox" name="contacto">
+                            <% } %> 
+                            <label class="form-check-label">
+                                Contacto
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-auto">

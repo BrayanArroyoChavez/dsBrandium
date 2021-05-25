@@ -64,10 +64,9 @@ function getCondicion(req, Op){
       where.push({correo_solicitante : {[Op.not]:""}});
     }
     if (req.query.correo_representante != undefined){
-      where.push({correo_representante : {[Op.not]:""}});
+      where.push({correo_representante   : {[Op.not]:""}});
     }
-    if(req.query.Telefono != undefined && req.query.Correo != undefined){
-      console.log(req.query.telefono)
+    if(req.query.contacto != undefined){
       where.push({
         [Op.or] : [
           {[Op.or] : [{ telefono_solicitante: {[Op.not]:""} },{ telefono_representante: {[Op.not]:""} }]},   
@@ -100,6 +99,9 @@ function getFiltro(req){
   }
   if (req.query.correo_representante != undefined){
     filter.correo_representante = req.query.correo_representante;
+  }
+  if (req.query.contacto != undefined){
+    filter.contacto = req.query.contacto;
   }
   return filter;
 }
