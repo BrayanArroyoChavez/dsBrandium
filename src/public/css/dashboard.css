@@ -74,7 +74,7 @@ body {
 }
 
 .filter select{
-    width: 120px !important;
+    width: 10vw !important;
 }
 
 .filter .form-control{

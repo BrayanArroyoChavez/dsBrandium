@@ -36,8 +36,14 @@ function getCondicion(req, Op){
     if (req.query.clasificacion != 'null' && req.query.clasificacion){
       where.push({clasificacion_niza : req.query.clasificacion});
     }
+    if (req.query.dpi != 'null' && req.query.dpi){
+      where.push({tipo_dpi : req.query.dpi});
+    }
+    if (req.query.tipo_marca != 'null' && req.query.tipo_marca){
+      where.push({tipo_marca : req.query.tipo_marca});
+    }
     if (req.query.clase != 'null' && req.query.clase){
-      where.push({clase_marca : req.query.Claclasese});
+      where.push({clase_marca : req.query.clase});
     }
     if (req.query.marca != 'null' && req.query.marca){
       where.push({nombre_marca : req.query.marca});
@@ -84,6 +90,12 @@ function getFiltro(req){
   }
   if (req.query.clasificacion != 'null' && req.query.clasificacion){
     filter.clasificacion = req.query.clasificacion;
+  }
+  if (req.query.dpi != 'null' && req.query.dpi){
+    filter.dpi = req.query.dpi;
+  }
+  if (req.query.tipo_marca != 'null' && req.query.tipo_marca){
+    filter.tipo_marca = req.query.tipo_marca;
   }
   if (req.query.clase != 'null' && req.query.clase){
     filter.clase = req.query.Clase;

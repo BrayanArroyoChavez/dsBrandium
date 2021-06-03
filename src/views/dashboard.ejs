@@ -68,6 +68,36 @@
                         </select>
                     </div>
                     <div class="col-auto">
+                        <label class="option-filter-title">Tipo de DPI</label>
+                        <select class="form-select" name="dpi">
+                            <option value="null"></option>
+                            <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
+                            <% dpi.forEach(function(c) { %>
+                                <% if(filter.dpi && filter.dpi == c.tipo_dpi) { %>
+                                    <option selected value=<%= c.tipo_dpi %>><%= c.tipo_dpi %></option>
+                                <% }else{ %>
+                                    <option value=<%= c.tipo_dpi %>><%= c.tipo_dpi %></option>
+                                <% } %>  
+                                
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label class="option-filter-title">Tipo de marca</label>
+                        <select class="form-select" name="tipo_marca">
+                            <option value="null"></option>
+                            <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
+                            <% tipo_marca.forEach(function(c) { %>
+                                <% if(filter.tipo_marca && filter.tipo_marca == c.tipo_marca) { %>
+                                    <option selected value=<%= c.tipo_marca %>><%= c.tipo_marca %></option>
+                                <% }else{ %>
+                                    <option value=<%= c.tipo_marca %>><%= c.tipo_marca %></option>
+                                <% } %>  
+                                
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="col-auto">
                         <label class="option-filter-title">Tipo de clase</label>
                         <select class="form-select" name="clase">
                             <option value="null"></option>

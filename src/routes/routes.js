@@ -90,6 +90,27 @@ router.get('/dashboard',async (req,res) =>{
     where: where
   });
 
+  //Función para extraer de la base de datos los distintos valores que tiene el campo que registra la clasificación de la marca
+  //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
+  clasificacion = await marcas_renovacion.findAll({
+    attributes: [Sequelize.fn('DISTINCT', Sequelize.col('clasificacion_niza')), 'clasificacion_niza'],
+    where: where
+  });
+
+  //Función para extraer de la base de datos los distintos valores que tiene el campo que registra el tipo de dpi de la marca
+  //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
+  dpi = await marcas_renovacion.findAll({
+    attributes: [Sequelize.fn('DISTINCT', Sequelize.col('tipo_dpi')), 'tipo_dpi'],
+    where: where
+  });
+
+  //Función para extraer de la base de datos los distintos valores que tiene el campo que registra el tipo de la marca
+  //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
+  tipo_marca = await marcas_renovacion.findAll({
+    attributes: [Sequelize.fn('DISTINCT', Sequelize.col('tipo_marca')), 'tipo_marca'],
+    where: where
+  });
+  
   //Función para extraer de la base de datos los distintos valores que tiene el campo que registra la clase de la marca
   //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
   //Pendiente de modificación para que muestre valores unicos
@@ -98,15 +119,8 @@ router.get('/dashboard',async (req,res) =>{
     where: where
   });
 
-  //Función para extraer de la base de datos los distintos valores que tiene el campo que registra la clasificación de la marca
-  //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
-  clasificacion = await marcas_renovacion.findAll({
-    attributes: [Sequelize.fn('DISTINCT', Sequelize.col('clasificacion_niza')), 'clasificacion_niza'],
-    where: where
-  });
-
   //Se renderiza en la página el archivo dashboard.ejs en la ruta /dashboard y se le envian las variables determinadas en el arreglo
-  res.render('dashboard.ejs', {marcas: marcas.rows, situacion: situacion, clase: clase, clasificacion: clasificacion, filter: filter , 
+  res.render('dashboard.ejs', {marcas: marcas.rows, situacion: situacion, clasificacion: clasificacion, dpi: dpi, tipo_marca: tipo_marca, clase: clase, filter: filter , 
     fsStart: req.query.fsStart , fsEnd: req.query.fsEnd, frStart: req.query.frStart, frEnd: req.query.frEnd});
  });
 
