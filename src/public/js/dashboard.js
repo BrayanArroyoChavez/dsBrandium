@@ -86,7 +86,7 @@ function getCondicion(req, Op){
 function getFiltro(req){
   filter = {};
   if (req.query.situacion != 'null' && req.query.situacion){
-    filter.situacion = req.query.Situacion;
+    filter.situacion = req.query.situacion;
   }
   if (req.query.clasificacion != 'null' && req.query.clasificacion){
     filter.clasificacion = req.query.clasificacion;
@@ -98,7 +98,7 @@ function getFiltro(req){
     filter.tipo_marca = req.query.tipo_marca;
   }
   if (req.query.clase != 'null' && req.query.clase){
-    filter.clase = req.query.Clase;
+    filter.clase = req.query.clase;
   }
   if (req.query.telefono_solicitante != undefined){
     filter.telefono_solicitante = req.query.telefono_solicitante;

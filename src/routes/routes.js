@@ -65,6 +65,7 @@ router.get('/dashboard',async (req,res) =>{
   const filter = fn.getFiltro(req);
   
   console.log(where)
+  console.log(filter)
   //Dado que la función getCondicion devuelve un arreglo se valida si es diferente de 0 para determinar si hay condiciones de filtrado
   if (where.length != 0){ 
     //Función para extraer de la base de datos las marcas registradas con las condiciones determinadas

@@ -32,7 +32,7 @@
         <!--Fin del header-->
         <!--Inicio de los filtros-->
         <div class="filter">
-            <form class="form-group row card-block" action="/dashboard" method="GET" id="filter" enctype="multipart/form-data">
+            <form class="form-group row card-block" action="/dashboard" method="GET" id="filter">
                 <p>Filtros</p>
                 <div class="row align-items-center">
                     <div class="col-auto">
@@ -46,9 +46,9 @@
                             <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
                             <% situacion.forEach(function(s) { %>
                                 <% if(filter.situacion && filter.situacion == s.situacion_marca) { %>
-                                    <option selected value=<%= s.situacion_marca %> ><%= s.situacion_marca %></option>
+                                    <option selected value="<%= s.situacion_marca %>" ><%= s.situacion_marca %></option>
                                 <% }else{ %>
-                                    <option value=<%= s.situacion_marca %>><%= s.situacion_marca %></option>
+                                    <option value="<%= s.situacion_marca %>"><%= s.situacion_marca %></option>
                                 <% } %>
                             <% }); %>
                         </select>
@@ -60,9 +60,9 @@
                             <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
                             <% clasificacion.forEach(function(c) { %>
                                 <% if(filter.clasificacion && filter.clasificacion == c.clasificacion_niza) { %>
-                                    <option selected value=<%= c.clasificacion_niza %>><%= c.clasificacion_niza %></option>
+                                    <option selected value="<%= c.clasificacion_niza %>"><%= c.clasificacion_niza %></option>
                                 <% }else{ %>
-                                    <option value=<%= c.clasificacion_niza %>><%= c.clasificacion_niza %></option>
+                                    <option value="<%= c.clasificacion_niza %>"><%= c.clasificacion_niza %></option>
                                 <% } %>                            
                             <% }); %>
                         </select>
@@ -74,9 +74,9 @@
                             <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
                             <% dpi.forEach(function(c) { %>
                                 <% if(filter.dpi && filter.dpi == c.tipo_dpi) { %>
-                                    <option selected value=<%= c.tipo_dpi %>><%= c.tipo_dpi %></option>
+                                    <option selected value="<%= c.tipo_dpi %>"><%= c.tipo_dpi %></option>
                                 <% }else{ %>
-                                    <option value=<%= c.tipo_dpi %>><%= c.tipo_dpi %></option>
+                                    <option value="<%= c.tipo_dpi %>"><%= c.tipo_dpi %></option>
                                 <% } %>  
                                 
                             <% }); %>
@@ -89,9 +89,9 @@
                             <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
                             <% tipo_marca.forEach(function(c) { %>
                                 <% if(filter.tipo_marca && filter.tipo_marca == c.tipo_marca) { %>
-                                    <option selected value=<%= c.tipo_marca %>><%= c.tipo_marca %></option>
+                                    <option selected value="<%= c.tipo_marca %>"><%= c.tipo_marca %></option>
                                 <% }else{ %>
-                                    <option value=<%= c.tipo_marca %>><%= c.tipo_marca %></option>
+                                    <option value="<%= c.tipo_marca %>"><%= c.tipo_marca %></option>
                                 <% } %>  
                                 
                             <% }); %>
@@ -104,9 +104,9 @@
                             <!--Se valida si antes de cargar la página ya se han aplicado filtros y en caso de ser así selecciona la opción en el dropdown-->
                             <% clase.forEach(function(c) { %>
                                 <% if(filter.clase && filter.clase == c.clase_marca) { %>
-                                    <option selected value=<%= c.clase_marca %>><%= c.clase_marca %></option>
+                                    <option selected value="<%= c.clase_marca %>"><%= c.clase_marca %></option>
                                 <% }else{ %>
-                                    <option value=<%= c.clase_marca %>><%= c.clase_marca %></option>
+                                    <option value="<%= c.clase_marca %>"><%= c.clase_marca %></option>
                                 <% } %>  
                                 
                             <% }); %>
@@ -329,22 +329,24 @@
             "processing": true,
             "orderClasses": false,
             "responsive": true,
+            "fixedHeader": true,
             //Habilita la paginación en el datatable
             "paging": true,
             //Habilita la opción que permite modificar la cantidad de registros que se muestran por página en el datatable
             "lengthChange": true,
             //Se determina las opciones de distribución de registros
-            "lengthMenu": [ [50, 100, 250, 500, -1], [50, 100, 250, 500, "All"] ],
-            //Cantidad inicial que se mostran en el datatable la primera vez que semuestra
+            "lengthMenu": [ [50, 100, 250, 500, -1], [50, 100, 250, 500, "Todos"] ],
+            //Cantidad inicial que se mostran en el datatable la primera vez que se muestra
             "pageLength": 50,
             //Se deshabilito la funciónn de busqueda
-            searching: false,
+            "searching": false,
             //Se deshabilito la funciónn de ordenamiento
-            ordering:  false,
+            "ordering":  false,
             //Ajuste de los mensajes que se muestran en el datables
             "language": {
                 "info":           "Mostrando _START_ a _END_ de _TOTAL_ registros",
                 "infoEmpty":      "Mostrando 0 a 0 de 0 registros",
+                "emptyTable":     "No se encontraron resultados",
                 "lengthMenu":     "Número de registros _MENU_",
                 "paginate": {
                     "first":      "Inicio",
@@ -377,8 +379,14 @@
             {
                 //Botón para exportar a excel los datos resultantes
                 extend: "excel",
+                header: true,
                 text:'<span class="prueba">Exportar a Excel</span>',
                 className:'ds-button',
+                customize: function( xlsx ) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+ 
+                $('row c[r^="N"]', sheet).attr( 's', '50' );
+            }
             }
             ]
         });

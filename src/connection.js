@@ -11,8 +11,8 @@ const marcas_renovacionModel = require('../models/marcas_renovacion');
     dialect  : sistema gestor de la base de datos
 })
  */
-const sequelize = new Sequelize('b5ieyox0oo6iha0jf6t8','u0u3tbtirq65ttqn','gVp3XMYOqwj6a6kvOpN5',{
-  host     : 'b5ieyox0oo6iha0jf6t8-mysql.services.clever-cloud.com',
+const sequelize = new Sequelize('kampsys','root','',{
+  host     : 'localhost',
   dialect  : 'mysql'
 })
 
