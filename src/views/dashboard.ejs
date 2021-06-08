@@ -264,14 +264,14 @@
                       <td><%= marca.fecha_registro %></td>
                       <td><%= marca.fecha_vencimiento %></td>
                       <td><%= marca.nombre_solicitante %></td>
-                      <td><%= marca.telefono_solicitante %></td>
+                      <td># <%= marca.telefono_solicitante %></td>
                       <td><%= marca.correo_solicitante %></td>
                       <td><%= marca.pais_solicitante %></td>
                       <td><%= marca.municipio_solicitante %></td>
                       <td><%= marca.direccion_solicitante %></td>
                       <td><%= marca.cp_solicitante %></td>
                       <td><%= marca.nombre_representante %></td>
-                      <td><%= marca.telefono_representante %></td>
+                      <td># <%= marca.telefono_representante %></td>
                       <td><%= marca.correo_representante %></td>
                       <td><%= marca.pais_representante %></td>
                       <td><%= marca.ciudad_representante %></td>
@@ -384,7 +384,8 @@
                 className:'ds-button',
                 customize: function( xlsx ) {
                 var sheet = xlsx.xl.worksheets['sheet1.xml'];
- 
+                
+                $('row c[r^="A"]', sheet).attr( 's', '50' );
                 $('row c[r^="N"]', sheet).attr( 's', '50' );
             }
             }
