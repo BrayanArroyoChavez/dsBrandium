@@ -60,17 +60,16 @@ router.get('/',async (req,res) =>{
 //Ruta para mostrar el dashboard
 router.get('/dashboard',async (req,res) =>{
   //Se derminan las condiciones de filtrado en caso de que se hayan aplicado
-  const where = fn.getCondicion(req,Op);
   //Se determian las opciones de filtrado seleccionadas para marcarlas como seleccionadas en la página
-  const filter = fn.getFiltro(req);
-  
-  console.log(where)
-  console.log(filter)
+  const parms = fn.getCondicion(req,Op);
+
+  console.log(parms[0])
+  console.log(parms[1])
   //Dado que la función getCondicion devuelve un arreglo se valida si es diferente de 0 para determinar si hay condiciones de filtrado
   if (where.length != 0){ 
     //Función para extraer de la base de datos las marcas registradas con las condiciones determinadas
     marcas = await marcas_renovacion.findAndCountAll({
-      where: where
+      where: parms[0]
     }).then(result => {
       return result
     });
@@ -88,28 +87,28 @@ router.get('/dashboard',async (req,res) =>{
   //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
   situacion = await marcas_renovacion.findAll({
     attributes: [Sequelize.fn('DISTINCT', Sequelize.col('situacion_marca')), 'situacion_marca'],
-    where: where
+    where: parms[0]
   });
 
   //Función para extraer de la base de datos los distintos valores que tiene el campo que registra la clasificación de la marca
   //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
   clasificacion = await marcas_renovacion.findAll({
     attributes: [Sequelize.fn('DISTINCT', Sequelize.col('clasificacion_niza')), 'clasificacion_niza'],
-    where: where
+    where: parms[0]
   });
 
   //Función para extraer de la base de datos los distintos valores que tiene el campo que registra el tipo de dpi de la marca
   //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
   dpi = await marcas_renovacion.findAll({
     attributes: [Sequelize.fn('DISTINCT', Sequelize.col('tipo_dpi')), 'tipo_dpi'],
-    where: where
+    where: parms[0]
   });
 
   //Función para extraer de la base de datos los distintos valores que tiene el campo que registra el tipo de la marca
   //El resultado se muestra como una de las opciones a elegir en los filtros del dashboard dentro de un dropdown
   tipo_marca = await marcas_renovacion.findAll({
     attributes: [Sequelize.fn('DISTINCT', Sequelize.col('tipo_marca')), 'tipo_marca'],
-    where: where
+    where: parms[0]
   });
   
   //Función para extraer de la base de datos los distintos valores que tiene el campo que registra la clase de la marca
@@ -117,11 +116,11 @@ router.get('/dashboard',async (req,res) =>{
   //Pendiente de modificación para que muestre valores unicos
   clase = await marcas_renovacion.findAll({
     attributes: [Sequelize.fn('DISTINCT', Sequelize.col('clase_marca')), 'clase_marca'],
-    where: where
+    where: parms[0]
   });
 
   //Se renderiza en la página el archivo dashboard.ejs en la ruta /dashboard y se le envian las variables determinadas en el arreglo
-  res.render('dashboard.ejs', {marcas: marcas.rows, situacion: situacion, clasificacion: clasificacion, dpi: dpi, tipo_marca: tipo_marca, clase: clase, filter: filter , 
+  res.render('dashboard.ejs', {marcas: marcas.rows, situacion: situacion, clasificacion: clasificacion, dpi: dpi, tipo_marca: tipo_marca, clase: clase, filter: parms[1] , 
     fsStart: req.query.fsStart , fsEnd: req.query.fsEnd, frStart: req.query.frStart, frEnd: req.query.frEnd});
  });
 
