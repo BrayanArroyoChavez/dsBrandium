@@ -30,34 +30,34 @@ function getCondicion(req, Op){
          }
       }
      }
-    if (req.query.situacion != 'null' && req.query.situacion){
+    if (req.query.situacion){
       where.push({situacion_marca : req.query.situacion});
     }
-    if (req.query.clasificacion != 'null' && req.query.clasificacion){
+    if (req.query.clasificacion){
       where.push({clasificacion_niza : req.query.clasificacion});
     }
-    if (req.query.dpi != 'null' && req.query.dpi){
+    if (req.query.dpi){
       where.push({tipo_dpi : req.query.dpi});
     }
-    if (req.query.tipo_marca != 'null' && req.query.tipo_marca){
+    if (req.query.tipo_marca){
       where.push({tipo_marca : req.query.tipo_marca});
     }
-    if (req.query.clase != 'null' && req.query.clase){
+    if (req.query.clase){
       where.push({clase_marca : req.query.clase});
     }
-    if (req.query.marca != 'null' && req.query.marca){
-      where.push({nombre_marca : req.query.marca});
+    if (req.query.marca){
+      where.push({nombre_marca : {[Op.substring] : req.query.marca}});
     }
-    if (req.query.n_solicitante != 'null' && req.query.n_solicitante){
+    if (req.query.n_solicitante){
       where.push({nombre_solicitante : {[Op.substring] : req.query.n_solicitante}});
     }
-    if (req.query.n_representante != 'null' && req.query.n_representante){
+    if (req.query.n_representante){
       where.push({nombre_representante : {[Op.substring] : req.query.n_representante}});
     }
-    if (req.query.m_solicitante != 'null' && req.query.m_solicitante){
+    if (req.query.m_solicitante){
       where.push({municipio_solicitante : {[Op.substring] : req.query.m_solicitante}});
     }
-    if (req.query.m_representante != 'null' && req.query.m_representante){
+    if (req.query.m_representante){
       where.push({ciudad_representante : {[Op.substring] : req.query.m_representante}});
     }
     if (req.query.telefono_solicitante != undefined){
@@ -85,19 +85,19 @@ function getCondicion(req, Op){
 //Función para determinar los filtros que se aplicaron
 function getFiltro(req){
   filter = {};
-  if (req.query.situacion != 'null' && req.query.situacion){
+  if (req.query.situacion){
     filter.situacion = req.query.situacion;
   }
-  if (req.query.clasificacion != 'null' && req.query.clasificacion){
+  if (req.query.clasificacion){
     filter.clasificacion = req.query.clasificacion;
   }
-  if (req.query.dpi != 'null' && req.query.dpi){
+  if (req.query.dpi){
     filter.dpi = req.query.dpi;
   }
-  if (req.query.tipo_marca != 'null' && req.query.tipo_marca){
+  if (req.query.tipo_marca){
     filter.tipo_marca = req.query.tipo_marca;
   }
-  if (req.query.clase != 'null' && req.query.clase){
+  if (req.query.clase){
     filter.clase = req.query.clase;
   }
   if (req.query.telefono_solicitante != undefined){
